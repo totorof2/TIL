@@ -26,7 +26,7 @@ rdd.persist(StorageLevel.MEMORY_ONLY_SER)
 - Serialized caching consumes almost the same amount of memory as RDD (plus some overhead)
 - Raw cache is very fast to process, and it scales pretty well
 - Processing serialized cached data takes longer
-- 즉 raw caching은 속도가 빠른데 비해 메모리를 많이 사용하고, serialized caching은 메모리를 적게 사용하는 대신해 데이터를 직렬화하는데 시간이 다소 오래 걸린다.
+- 즉 raw caching은 속도가 빠른데 비해 메모리를 많이 사용하고, serialized caching은 메모리를 적게 사용하는 대신에 데이터를 직렬화하는데 시간이 다소 오래 걸린다.
 
 ## So what does all this mean?
 - For small data sets (few hundred megs) we can use raw caching. Even though this will consume more memory, the small size won’t put too much pressure on Java garbage collection.
