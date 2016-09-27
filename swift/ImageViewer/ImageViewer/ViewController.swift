@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var imageNames = [ "01.png", "02.png", "03.png", "04.png", "05.png", "06.png" ]
+    var curImageIdx = 0
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        imageView.image = UIImage(named: imageNames[0])
+        imageView.image = UIImage(named: imageNames[curImageIdx])
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,9 +27,22 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnPrev(sender: UIButton) {
+        curImageIdx = curImageIdx - 1
+        if(curImageIdx < 0) {
+            curImageIdx = imageNames.count - 1
+        }
+        
+        imageView.image = UIImage(named: imageNames[curImageIdx])
+        
     }
     
     @IBAction func btnNext(sender: UIButton) {
+        curImageIdx = curImageIdx + 1
+        if(curImageIdx > imageNames.count - 1 ) {
+            curImageIdx = 0
+        }
+        
+        imageView.image = UIImage(named: imageNames[curImageIdx])
     }
 }
 
